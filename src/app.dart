@@ -1,5 +1,5 @@
 import 'server.dart';
-import './routes/router.dart';
+import 'routes/index.router.dart';
 import 'package:dart_dotenv/dart_dotenv.dart';
 
 final Map env = DotEnv(filePath: '.env').getDotEnv();
