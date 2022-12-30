@@ -1,12 +1,14 @@
+import 'dart:convert';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
-import 'login.router.dart';
 
-class RouterHandler {
+import '../controllers/loginController.dart';
+
+class LoginRouter {
   Handler get handler {
     final router = Router();
 
-    router.all('/login', LoginRouter().handler);
+    router.post('/login', LoginController().login);
 
     return router;
   }
