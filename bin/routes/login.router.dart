@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 
-import '../controllers/loginController.dart';
+import '../controllers/login.controller.dart';
 
 class LoginRouter {
   Handler get handler {
