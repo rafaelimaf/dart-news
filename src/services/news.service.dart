@@ -1,17 +1,25 @@
 class NewsService {
-  createNews() async {
-    return;
+  List _db = [];
+
+  createNews(news) async {
+    _db.add(news);
+    
+    return _db;
   }
   
   readNews() async {
-    return;
+    return _db;
   }
 
-  updateNews(id) async {    
-    return;
+  updateNews(id, news) async {    
+    final result = _db.insert(id, news);
+
+    return result;
   }
 
   deleteNews(id) async {    
-    return;
+    final result = _db.removeWhere((element) => element.id == id);
+
+    return result;
   }
 }

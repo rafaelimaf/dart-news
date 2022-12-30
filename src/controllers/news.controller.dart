@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:shelf/shelf.dart';
-
 import '../services/news.service.dart';
 
 class NewsController {
@@ -10,27 +9,33 @@ class NewsController {
 
 
   Future<Response> createNews(Request req) async {
-    await _service.createNews();
+    final body = await req.readAsString();
+
+    final response = await _service.createNews(jsonDecode(body));
     
-    return Response(201);
+    return Response(201, body: jsonEncode(response));
   }
   
   Future<Response> readNews(Request req) async {
-    await _service.readNews();
+    final response = await _service.readNews();
 
-    return Response(200, body: jsonEncode([]), headers: {"content-type": "application/json"});
+    return Response(200, body: jsonEncode(response));
   }
 
   Future<Response> updateNews(Request req, String id) async {    
-    await _service.updateNews(id);
+    final body = await req.readAsString();
+    final bodyParsed = jsonDecode(body);
+
+    await _service.updateNews(bodyParsed["id"], bodyParsed);
     
-    return Response(200, body: jsonEncode({
-      "message": "Você editou a notícia $id"
-    }));
+    return Response(200);
   }
 
   Future<Response> deleteNews(Request req, String id) async {
-    await _service.deleteNews(id);
+    final body = await req.readAsString();
+    final bodyParsed = jsonDecode(body);
+
+    await _service.deleteNews(bodyParsed["id"]);
 
     return Response(204);
   }
