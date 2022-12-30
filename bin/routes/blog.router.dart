@@ -1,12 +1,13 @@
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
-import '../controllers/login.controller.dart';
 
-class LoginRouter {
+import '../controllers/blog.controller.dart';
+
+class BlogRouter {
   Handler get handler {
     final router = Router();
 
-    router.post('/login', LoginController().login);
+    router.get('/blog/news', BlogController().getNews);
 
     return router;
   }
