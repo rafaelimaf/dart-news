@@ -1,4 +1,4 @@
-import './infra/server.dart';
+import 'server.dart';
 import './routes/router.dart';
 
 RouterHandler router = RouterHandler();
