@@ -1,25 +1,31 @@
-class NewsService {
-  List _db = [];
+import '../database/entities/News.dart';
+import 'generic.service.dart';
 
-  createNews(news) async {
-    _db.add(news);
-    
-    return _db;
-  }
-  
-  readNews() async {
-    return _db;
+class NewsService extends GenericService<News> {
+  final List<News> _model = [];
+
+  @override
+  News create(news) {
+    throw UnimplementedError();
   }
 
-  updateNews(id, news) async {    
-    final result = _db.insert(id, news);
-
-    return result;
+  @override
+  List<News> read() {
+    throw UnimplementedError();
   }
 
-  deleteNews(id) async {    
-    final result = _db.removeWhere((element) => element.id == id);
+  @override
+  News readOne(id) {
+    throw UnimplementedError();
+  }
 
-    return result;
+  @override
+  News update(id, news) {
+    throw UnimplementedError();
+  }
+
+  @override
+  News delete(id) {
+    throw UnimplementedError();
   }
 }

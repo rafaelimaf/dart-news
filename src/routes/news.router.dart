@@ -1,19 +1,20 @@
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 import '../controllers/news.controller.dart';
-import '../services/news.service.dart';
 
 class NewsRouter {
   Handler get handler {
     final router = Router();
 
-    router.post('/news', NewsController(NewsService()).createNews);
+    router.post('/news', NewsController().create);
 
-    router.get('/news', NewsController(NewsService()).readNews);
+    router.get('/news', NewsController().read);
 
-    router.put('/news/<id>', NewsController(NewsService()).updateNews);
+    router.get('/news/<id>', NewsController().readOne);
 
-    router.delete('/news/<id>', NewsController(NewsService()).deleteNews);
+    router.put('/news/<id>', NewsController().update);
+
+    router.delete('/news/<id>', NewsController().delete);
 
     return router;
   }
