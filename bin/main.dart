@@ -1,10 +1,10 @@
-import 'package:shelf/shelf_io.dart' as shelf_io;
-import 'router.dart';
+import './infra/server.dart';
+import './routes/router.dart';
 
-void main() async {
-  var router = RouterHandler();
+RouterHandler router = RouterHandler();
 
-  await shelf_io.serve(router.handler, 'localhost', 8080);
+void main() {
+  var app = AppServer();
 
-  print('Server is up on http://localhost:8080');
+  app.initialize(router.handler);
 }
