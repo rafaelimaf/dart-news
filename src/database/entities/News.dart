@@ -1,12 +1,12 @@
-class NewsModel {
-  final int id;
+class News {
+  final int? id;
   final String title;
   final String description;
   final String image;
   final DateTime sendTime;
   final DateTime? updatedTime; 
 
-  NewsModel(
+  News(
     this.id,
     this.title,
     this.description,
