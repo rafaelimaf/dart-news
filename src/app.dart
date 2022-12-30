@@ -1,5 +1,8 @@
 import 'server.dart';
 import './routes/router.dart';
+import 'package:dart_dotenv/dart_dotenv.dart';
+
+final Map env = DotEnv(filePath: '.env').getDotEnv();
 
 RouterHandler router = RouterHandler();
 
@@ -8,7 +11,7 @@ void main() {
 
   app.initialize(
     handler: router.handler,
-    address: 'localhost',
-    port: 8080
+    address: env["ADDRESS"],
+    port: int.parse(env["PORT"])
   );
 }
