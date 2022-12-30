@@ -9,6 +9,8 @@ class RouterHandler {
       .add(BlogRouter().handler)
       .handler;
 
-    return router;
+    var pipe = Pipeline().addMiddleware(logRequests()).addHandler(router);
+
+    return pipe;
   }
 }

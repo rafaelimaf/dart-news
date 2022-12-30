@@ -7,7 +7,7 @@ class BlogRouter {
   Handler get handler {
     final router = Router();
 
-    router.get('/blog/news', BlogController().getNews);
+    router.get('/news', BlogController().getNews);
 
     return router;
   }
