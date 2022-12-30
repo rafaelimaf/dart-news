@@ -1,42 +1,32 @@
-import 'dart:convert';
 import 'package:shelf/shelf.dart';
 import '../services/news.service.dart';
+import 'generic.controller.dart';
 
-class NewsController {
-  final NewsService _service;
+class NewsController extends GenericController {
+  final NewsService _service = NewsService();
 
-  NewsController(this._service);
-
-
-  Future<Response> createNews(Request req) async {
-    final body = await req.readAsString();
-
-    final response = await _service.createNews(jsonDecode(body));
-    
-    return Response(201, body: jsonEncode(response));
-  }
-  
-  Future<Response> readNews(Request req) async {
-    final response = await _service.readNews();
-
-    return Response(200, body: jsonEncode(response));
+  @override
+  Future<Response> create(Request req) async {
+    throw UnimplementedError();
   }
 
-  Future<Response> updateNews(Request req, String id) async {    
-    final body = await req.readAsString();
-    final bodyParsed = jsonDecode(body);
-
-    await _service.updateNews(bodyParsed["id"], bodyParsed);
-    
-    return Response(200);
+  @override
+  Future<Response> read(Request req) async {
+    throw UnimplementedError();
   }
 
-  Future<Response> deleteNews(Request req, String id) async {
-    final body = await req.readAsString();
-    final bodyParsed = jsonDecode(body);
+  @override
+  Future<Response> readOne(Request req) async {
+    throw UnimplementedError();
+  }
 
-    await _service.deleteNews(bodyParsed["id"]);
+  @override
+  Future<Response> update(Request req) async {
+    throw UnimplementedError();
+  }
 
-    return Response(204);
+  @override
+  Future<Response> delete(Request req) async {
+    throw UnimplementedError();
   }
 }
