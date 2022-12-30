@@ -6,5 +6,9 @@ RouterHandler router = RouterHandler();
 void main() {
   var app = AppServer();
 
-  app.initialize(router.handler);
+  app.initialize(
+    handler: router.handler,
+    address: 'localhost',
+    port: 8080
+  );
 }
